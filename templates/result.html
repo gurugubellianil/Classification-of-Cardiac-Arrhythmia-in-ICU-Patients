@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/result.css">
+    <title>Prediction Result</title>
+</head>
+
+<body>
+    <div id="preloader">
+        <img src="../static/images/Preloader_Walk.gif" alt="Loading...">
+    </div>
+    
+    <div class="container result-container">
+        <h2>Prediction Result</h2>
+
+        <div class="image-block">
+            <img src="{{ image_url }}" alt="Uploaded .Mat file">
+        </div>
+
+        <p class="prediction-text">
+            <span class="prediction-label">Prediction:</span>
+            <span class="prediction-value">{{ prediction }}</span>
+        </p>
+
+        <a href="{{ url_for('index') }}" class="btn"><i class="fa-solid fa-upload"></i> Upload Another file</a>
+    </div>
+    
+    <script src="../static/js/script.js"></script>
+</body>
+
+</html>

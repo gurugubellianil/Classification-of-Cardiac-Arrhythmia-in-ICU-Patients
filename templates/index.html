@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardiac Arrhythmia Prediction</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="../static/css/style.css">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="{{ url_for('static', filename='images/Preloader_Rocket.gif') }}" alt="Loading...">
+  </div>
+
+  <div class="upload-container">
+    <h2>Upload a file for Prediction</h2>
+    <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+      <label for="uploadBtn" class="custom-file-upload">
+        <i class="fa-solid fa-upload"></i> Choose File
+      </label>
+      <input type="file" name="image" id="uploadBtn" accept="image/*" required onchange="previewImage(event)">
+
+      <!-- Image Preview Section -->
+      <div id="imagePreview">
+        <img id="previewImg" src="" alt="Selected .Mat file">
+      </div>
+
+      <button type="submit" id="submitBtn">
+        <i class="fa fa-paper-plane"></i> Predict
+      </button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
